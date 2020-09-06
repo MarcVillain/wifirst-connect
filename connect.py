@@ -12,6 +12,8 @@ import time
 # Your credentials
 USERNAME = "PUT_YOUR_USERNAME_HERE"
 PASSWORD = "PUT_YOUR_PASSWORD_HERE"
+# URL to be tested for checking internet access
+TEST_URL = "http://www.google.com"
 # Time in seconds between each login renewal
 RENEW_INTERVAL = 3600
 # Time in seconds between login retry when connection is lost
@@ -27,7 +29,7 @@ logger = logging.getLogger("wifirst_connect")
 def connect(username, password):
     # Try to access internet
     try:
-        web_page = requests.get("http://www.google.com", allow_redirects=False)
+        web_page = requests.get(TEST_URL, allow_redirects=False)
     except:
         logger.error("Unable to access the network.")
         return False
@@ -109,7 +111,7 @@ def connect(username, password):
                     "username": username_val,
                     "password": password_val,
                     "qos_class": "",
-                    "success_url": "http://www.google.com",
+                    "success_url": TEST_URL,
                     "error_url": "https://connect.wifirst.net/login_error",
                 }
 
@@ -120,7 +122,7 @@ def connect(username, password):
                     return False
 
                 if wifirst_page.status_code == 200:
-                    if wifirst_page.url == "http://www.google.com":
+                    if wifirst_page.url == TEST_URL:
                         logger.info("Authentication sucessfull.")
                         return True
                     else:
@@ -140,7 +142,7 @@ def connect(username, password):
             logger.error("Unable to reach Wifirst redirected site.")
             return False
     else:
-        logger.error("Unexpected HTTP result for http://www.google.com.")
+        logger.error(f"Unexpected HTTP result for {TEST_URL}.")
         return False
 
 
