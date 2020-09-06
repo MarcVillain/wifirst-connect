@@ -1,14 +1,14 @@
 import argparse
 import logging
-from logging.handlers import RotatingFileHandler
 import re
 import requests
 import sys
 import time
 
+from logging.handlers import RotatingFileHandler
+
 # Configuration
 # -------------
-
 # Your credentials
 USERNAME = "PUT_YOUR_USERNAME_HERE"
 PASSWORD = "PUT_YOUR_PASSWORD_HERE"
@@ -75,9 +75,7 @@ def connect(username, password):
 
     # Send the authentication form, with the credentials
     try:
-        wifirst_page = session.post(
-            "https://selfcare.wifirst.net/sessions", data=post_data, allow_redirects=False
-        )
+        wifirst_page = session.post("https://selfcare.wifirst.net/sessions", data=post_data, allow_redirects=False)
     except:
         logger.error("Unable to send the credentials through the authentication form.")
         return False
