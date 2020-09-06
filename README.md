@@ -2,7 +2,7 @@ Wifirst Connect
 ===
 This script allows for automatic login on the [Captive Portal](https://www.wifirst.com/en/captive-portal) of the [Wifirst](https://www.wifirst.com/en/) WiFi provider.
 
-This was inspired by this [ConnectToWiFirst](https://github.com/JoseIgnacioTamayo/ConnectToWiFirst) python script.
+This is a rework of this [ConnectToWiFirst](https://github.com/JoseIgnacioTamayo/ConnectToWiFirst) python script.
 
 # How to install
 
